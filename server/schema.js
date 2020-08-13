@@ -37,7 +37,7 @@ const typeDefs = gql`
     username: String!
     password: String!
     email: String!
-    records: [Quake]!
+    records: [Quake]
   }
 `;
 
