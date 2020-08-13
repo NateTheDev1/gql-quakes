@@ -9,7 +9,19 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    saveRecord(recordId: [ID!]): 
+    # if false, saving record failed
+    saveRecord(recordId: ID!): RecordUdpdateResponse
+
+    # if false, deleting record failed
+    deleteRecord(recordId: ID!): RecordUdpdateResponse
+
+    login(email: String): String
+  }
+
+  type RecordUdpdateResponse {
+    success: Boolean!
+    message: String
+    records: [Quake]
   }
 
   type Quake {
@@ -25,9 +37,8 @@ const typeDefs = gql`
     username: String!
     password: String!
     email: String!
+    records: [Quake]!
   }
-
-
 `;
 
 module.exports = typeDefs;
