@@ -1,4 +1,5 @@
 const { RESTDataSource } = require("apollo-datasource-rest");
+const moment = require("moment");
 
 class QuakeApi extends RESTDataSource {
   constructor() {
