@@ -18,6 +18,8 @@ class QuakeApi extends RESTDataSource {
       : [];
   }
 
+  async getQuakeById() {}
+
   quakeReducer(quake) {
     const timestamp = quake.properties.time;
     const datestring = moment(timestamp).format("MMMM Do, YYYY [at] HH:mm:SS");
