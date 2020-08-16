@@ -22,6 +22,14 @@ module.exports = {
           : false,
       };
     },
+    quake: (_, { id }, { dataSources }) =>
+      dataSources.quakeAPI.getQuakeById({ quakeId: id }),
     users: (_, __, { dataSources }) => dataSources.userAPI.getUsers(),
+  },
+  Mutation: {
+    login: async (_, { email }, { dataSources }) => {
+      const user = await dataSources.userAPI.getUser({ email });
+      if (user) return Buffer.from(email).toString("base64");
+    },
   },
 };

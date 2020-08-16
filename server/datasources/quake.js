@@ -18,6 +18,17 @@ class QuakeApi extends RESTDataSource {
       : [];
   }
 
+  async getUser({ email: emailArg }) {
+    const email =
+      this.context && this.context.user ? this.context.user.email : emailArg;
+
+    const theUser = this.store.users.map((user) => {
+      if (email === user.email) {
+        return user;
+      }
+    });
+  }
+
   async getQuakeById() {}
 
   quakeReducer(quake) {
