@@ -2,11 +2,17 @@ const { gql } = require("apollo-server");
 
 const typeDefs = gql`
   type Query {
-    quakes: [Quake]!
+    quakes(pageSize: Int, after: String): QuakeConnection!
     quake(id: ID!): Quake
     users: [User]
     # Queries for the current user
     me: User
+  }
+
+  type QuakeConnection {
+    cursor: String!
+    hasMore: Boolean!
+    quakes: [Quake]!
   }
 
   type Mutation {
@@ -30,7 +36,7 @@ const typeDefs = gql`
     location: String
     magnitude: Float
     when: String
-    time: String
+    cursor: String
   }
 
   type User {
